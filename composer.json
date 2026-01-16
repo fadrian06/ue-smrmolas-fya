@@ -4,7 +4,8 @@
     "process-timeout": 0
   },
   "require": {
-    "flightphp/core": "^3.18"
+    "flightphp/core": "^3.18",
+    "leafs/auth": "^4.2"
   },
   "scripts": {
     "serve": "php -S localhost:61001"
