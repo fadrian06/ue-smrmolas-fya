@@ -28,4 +28,6 @@ Container::getInstance()
   ->execute();
 Flight::registerContainerHandler(Container::getInstance());
 
+Flight::set('flight.views.path', 'resources/views');
+
 Flight::start();
