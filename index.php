@@ -13,6 +13,7 @@ if (!file_exists('.env')) {
 (new Dotenv)->load('.env.example', '.env');
 
 Container::getInstance()->singleton(Auth::class);
+Container::getInstance()->get(Auth::class)->autoConnect();
 Flight::registerContainerHandler(Container::getInstance());
 
 Flight::start();
