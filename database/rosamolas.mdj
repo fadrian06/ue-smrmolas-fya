@@ -1,0 +1,26 @@
+{
+	"_type": "Project",
+	"_id": "AAAAAAFF+h6SjaM2Hec=",
+	"name": "U.E. Santa María Rosa Molas Fe y Alegría",
+	"ownedElements": [
+		{
+			"_type": "ERDDataModel",
+			"_id": "AAAAAAGbxahILtuEHGU=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "Data Model",
+			"ownedElements": [
+				{
+					"_type": "ERDDiagram",
+					"_id": "AAAAAAGbxahILtuFgZ4=",
+					"_parent": {
+						"$ref": "AAAAAAGbxahILtuEHGU="
+					},
+					"name": "ERDDiagram"
+				}
+			]
+		}
+	],
+	"documentVersion": 1
+}
