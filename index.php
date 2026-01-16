@@ -30,4 +30,8 @@ Flight::registerContainerHandler(Container::getInstance());
 
 Flight::set('flight.views.path', 'resources/views');
 
+foreach (glob('routes/*.php') ?: [] as $routes) {
+  require $routes;
+}
+
 Flight::start();
