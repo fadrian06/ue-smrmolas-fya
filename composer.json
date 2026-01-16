@@ -1,6 +1,7 @@
 {
   "config": {
-    "sort-packages": true
+    "sort-packages": true,
+    "process-timeout": 0
   },
   "require": {
     "flightphp/core": "^3.18"
