@@ -1,5 +1,8 @@
 {
   "config": {
     "sort-packages": true
+  },
+  "require": {
+    "flightphp/core": "^3.18"
   }
 }
