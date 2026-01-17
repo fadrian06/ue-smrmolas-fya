@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Flight;
 use Leaf\Auth;
 use Leaf\Auth\User;
+use Leaf\Helpers\Password;
 
 final readonly class EmployeeController
 {
@@ -44,7 +45,23 @@ final readonly class EmployeeController
 
   function store()
   {
-    //
+    $role = Flight::request()->data->{$this->auth->config('roles.key')};
+    $email = Flight::request()->data->email;
+    $password = Flight::request()->data->{$this->auth->config('password.key')};
+
+    $this
+      ->auth
+      ->db()
+      ->insert((string) $this->auth->config('db.table'))
+      ->params(compact('email') + [
+        $this->auth->config('password.key') => Password::hash((string) $password, Password::DEFAULT),
+        $this->auth->config('roles.key') => json_encode([$role]),
+      ])
+      ->execute();
+
+    Flight::redirect('/employees');
+
+    exit;
   }
 
   function edit(int $id)
