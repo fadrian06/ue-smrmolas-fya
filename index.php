@@ -15,14 +15,8 @@ if (!file_exists('.env')) {
 Container::getInstance()->singleton(Auth::class);
 $auth = Container::getInstance()->get(Auth::class);
 $auth->config('session', true);
-$httpClient = (object) $auth->client('google')?->getHttpClient();
-$configProperty = new ReflectionProperty($httpClient, 'config');
-$configValue = $configProperty->getValue($httpClient);
-$configValue['verify'] = false;
-$configProperty->setValue($httpClient, $configValue);
 
-Container::getInstance()
-  ->get(Auth::class)
+$auth
   ->autoConnect()
   ->db()
   ->query(<<<sql
@@ -30,11 +24,21 @@ Container::getInstance()
       {$auth->config('id.key')} integer primary key autoincrement,
       email varchar(255) not null unique check (email like '%@%'),
       {$auth->config('password.key')} varchar(255),
-      created_at datetime,
-      updated_at datetime
+      created_at datetime default current_timestamp,
+      updated_at datetime default current_timestamp
     );
   sql)
   ->execute();
+
+$httpClient = (object) $auth->client('google')?->getHttpClient();
+$configProperty = new ReflectionProperty($httpClient, 'config');
+$configValue = $configProperty->getValue($httpClient);
+$configValue['verify'] = false;
+$configProperty->setValue($httpClient, $configValue);
+
+$auth->createRoles([
+  'administrative' => [],
+]);
 
 Flight::registerContainerHandler(Container::getInstance());
 
