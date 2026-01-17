@@ -1,1 +1,1 @@
-<?= $page ?>
+<?php Flight::render('layouts/base', compact('page')) ?>

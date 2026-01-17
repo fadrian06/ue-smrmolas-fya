@@ -1,0 +1,97 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Flight;
+use Leaf\Auth;
+use Leaf\Auth\User;
+
+final readonly class EmployeeController
+{
+  function __construct(private Auth $auth)
+  {
+    //
+  }
+
+  function index()
+  {
+    $employees = array_map(
+      fn(array $data): User => new User($data),
+      (array) $this
+        ->auth
+        ->db()
+        ->select((string) $this->auth->config('db.table'))
+        ->all()
+    );
+
+    Flight::render('pages/employees/index', compact('employees'), 'page');
+    Flight::render('layouts/auth');
+  }
+
+  function show(int $id)
+  {
+    $employee = $this->getUserById($id);
+
+    Flight::render('pages/employees/show', compact('employee'), 'page');
+    Flight::render('layouts/auth');
+  }
+
+  function create()
+  {
+    Flight::render('pages/employees/create', key: 'page');
+    Flight::render('layouts/auth');
+  }
+
+  function store()
+  {
+    //
+  }
+
+  function edit(int $id)
+  {
+    $employee = $this->getUserById($id);
+
+    Flight::render('pages/employees/edit', compact('employee'), 'page');
+    Flight::render('layouts/auth');
+  }
+
+  function update(int $id)
+  {
+    $params = [];
+
+    $this
+      ->auth
+      ->db()
+      ->update((string) $this->auth->config('db.table'))
+      ->params($params)
+      ->where((string) $this->auth->config('id.key'), $id)
+      ->execute();
+  }
+
+  function destroy(int $id)
+  {
+    $this
+      ->auth
+      ->db()
+      ->delete((string) $this->auth->config('db.table'))
+      ->where((string) $this->auth->config('id.key'), $id)
+      ->execute();
+  }
+
+  private function getUserById(int $id): User
+  {
+    $data = $this
+      ->auth->db()
+      ->select((string) $this->auth->config('db.table'))
+      ->where((string) $this->auth->config('id.key'), $id)
+      ->first() ?: [];
+
+    if (!$data) {
+      Flight::notFound();
+
+      exit;
+    }
+
+    return new User($data);
+  }
+}

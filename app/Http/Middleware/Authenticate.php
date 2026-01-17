@@ -15,7 +15,7 @@ final readonly class Authenticate
   function before()
   {
     if ($this->auth->id() === null) {
-      Flight::redirect('/login');
+      Flight::redirect('/logout');
 
       exit;
     }

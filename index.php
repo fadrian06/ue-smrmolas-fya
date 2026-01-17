@@ -25,7 +25,11 @@ $auth
       email varchar(255) not null unique check (email like '%@%'),
       {$auth->config('password.key')} varchar(255),
       created_at datetime default current_timestamp,
-      updated_at datetime default current_timestamp
+      updated_at datetime default current_timestamp,
+      {$auth->config('roles.key')}
+        varchar(255)
+        not null
+        check ({$auth->config('roles.key')} like '["%"]')
     );
   sql)
   ->execute();
@@ -37,12 +41,17 @@ $configValue['verify'] = false;
 $configProperty->setValue($httpClient, $configValue);
 
 $auth->createRoles([
-  'administrative' => [],
+  'administrative' => [
+    'create employee',
+    'edit employee',
+    'destroy employee',
+  ],
 ]);
 
 Flight::registerContainerHandler(Container::getInstance());
 
 Flight::set('flight.views.path', 'resources/views');
+Flight::view()->preserveVars = false;
 
 foreach (glob('routes/*.php') ?: [] as $routes) {
   require $routes;
