@@ -11,4 +11,5 @@ use Leaf\Auth;
     type="password"
     name="<?= Container::getInstance()->get(Auth::class)->config('password.key') ?>" />
   <input type="submit" />
+  <a href=".<?= Flight::getUrl('oauth2.google.callback') ?>">Google</a>
 </form>

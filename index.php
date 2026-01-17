@@ -13,19 +13,29 @@ if (!file_exists('.env')) {
 (new Dotenv)->load('.env.example', '.env');
 
 Container::getInstance()->singleton(Auth::class);
-Container::getInstance()->get(Auth::class)->config('session', true);
+$auth = Container::getInstance()->get(Auth::class);
+$auth->config('session', true);
+$httpClient = (object) $auth->client('google')?->getHttpClient();
+$configProperty = new ReflectionProperty($httpClient, 'config');
+$configValue = $configProperty->getValue($httpClient);
+$configValue['verify'] = false;
+$configProperty->setValue($httpClient, $configValue);
+
 Container::getInstance()
   ->get(Auth::class)
   ->autoConnect()
   ->db()
-  ->query(<<<'sql'
+  ->query(<<<sql
     create table if not exists users (
-      id integer,
-      email varchar(255),
-      password varchar(255)
+      {$auth->config('id.key')} integer primary key autoincrement,
+      email varchar(255) not null unique check (email like '%@%'),
+      {$auth->config('password.key')} varchar(255),
+      created_at datetime,
+      updated_at datetime
     );
   sql)
   ->execute();
+
 Flight::registerContainerHandler(Container::getInstance());
 
 Flight::set('flight.views.path', 'resources/views');
