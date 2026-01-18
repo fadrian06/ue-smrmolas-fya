@@ -3,6 +3,15 @@
 use flight\Container;
 use Leaf\Auth;
 use Symfony\Component\Dotenv\Dotenv;
+use Symfony\Component\VarDumper\Cloner\VarCloner;
+use Symfony\Component\VarDumper\Dumper\CliDumper;
+use Symfony\Component\VarDumper\Dumper\ContextProvider\CliContextProvider;
+use Symfony\Component\VarDumper\Dumper\ContextProvider\SourceContextProvider;
+use Symfony\Component\VarDumper\Dumper\HtmlDumper;
+use Symfony\Component\VarDumper\Dumper\ServerDumper;
+use Symfony\Component\VarDumper\VarDumper;
+
+use function Leaf\_env;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -11,6 +20,18 @@ if (!file_exists('.env')) {
 }
 
 (new Dotenv)->load('.env.example', '.env');
+
+if (_env('APP_ENV') === 'local') {
+  $cloner = new VarCloner;
+  $fallbackDumper = in_array(PHP_SAPI, ['cli', 'phpdbg']) ? new CliDumper : new HtmlDumper;
+
+  $dumper = new ServerDumper('tcp://127.0.0.1:9912', $fallbackDumper, [
+    'cli' => new CliContextProvider,
+    'source' => new SourceContextProvider,
+  ]);
+
+  VarDumper::setHandler(fn(mixed $var): ?string => $dumper->dump($cloner->cloneVar($var)));
+}
 
 Container::getInstance()->singleton(Auth::class);
 $auth = Container::getInstance()->get(Auth::class);

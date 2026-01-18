@@ -12,9 +12,11 @@
     "symfony/dotenv": "^7.4"
   },
   "scripts": {
-    "serve": "php -S localhost:61001"
+    "serve": "php -S localhost:61001",
+    "server:dump": "var-dump-server"
   },
   "require-dev": {
+    "symfony/console": "^7.4",
     "symfony/var-dumper": "^7.4"
   },
   "autoload": {
