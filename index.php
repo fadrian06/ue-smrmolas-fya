@@ -36,9 +36,14 @@ if (_env('APP_ENV') === 'local') {
 Container::getInstance()->singleton(Auth::class);
 $auth = Container::getInstance()->get(Auth::class);
 $auth->config('session', true);
+$auth->autoConnect();
+$pdo = $auth->db()->connection();
+
+if ($pdo instanceof PDO) {
+  $auth->dbConnection($pdo);
+}
 
 $auth
-  ->autoConnect()
   ->db()
   ->query(<<<sql
     create table if not exists users (
