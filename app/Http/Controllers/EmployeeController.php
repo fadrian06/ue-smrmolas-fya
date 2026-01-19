@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Role;
 use Flight;
 use Leaf\Auth;
 use Leaf\Auth\User;
@@ -17,7 +18,7 @@ final readonly class EmployeeController
   function index()
   {
     $employees = array_map(
-      fn(array $data): User => new User($data),
+      fn(array $data): User => new User($data, false),
       (array) $this
         ->auth
         ->db()
@@ -45,7 +46,7 @@ final readonly class EmployeeController
 
   function store()
   {
-    $role = Flight::request()->data->{$this->auth->config('roles.key')};
+    $role = Role::from((string) Flight::request()->data->{$this->auth->config('roles.key')});
     $email = Flight::request()->data->email;
     $password = Flight::request()->data->{$this->auth->config('password.key')};
 
@@ -55,7 +56,7 @@ final readonly class EmployeeController
       ->insert((string) $this->auth->config('db.table'))
       ->params(compact('email') + [
         $this->auth->config('password.key') => Password::hash((string) $password, Password::DEFAULT),
-        $this->auth->config('roles.key') => json_encode([$role]),
+        $this->auth->config('roles.key') => json_encode([$role->name]),
       ])
       ->execute();
 
@@ -66,6 +67,12 @@ final readonly class EmployeeController
 
   function edit(int $id)
   {
+    if ($id === $this->auth->id()) {
+      Flight::redirect('/account-settings');
+
+      exit;
+    }
+
     $employee = $this->getUserById($id);
 
     Flight::render('pages/employees/edit', compact('employee'), 'page');
@@ -93,12 +100,17 @@ final readonly class EmployeeController
       ->delete((string) $this->auth->config('db.table'))
       ->where((string) $this->auth->config('id.key'), $id)
       ->execute();
+
+    Flight::redirect('/employees');
+
+    exit;
   }
 
   private function getUserById(int $id): User
   {
     $data = $this
-      ->auth->db()
+      ->auth
+      ->db()
       ->select((string) $this->auth->config('db.table'))
       ->where((string) $this->auth->config('id.key'), $id)
       ->first() ?: [];
@@ -109,6 +121,6 @@ final readonly class EmployeeController
       exit;
     }
 
-    return new User($data);
+    return new User($data, false);
   }
 }

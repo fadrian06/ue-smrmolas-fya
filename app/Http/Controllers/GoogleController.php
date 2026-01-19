@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Role;
 use Exception;
 use Flight;
 use Leaf\Auth;
@@ -58,7 +59,7 @@ final readonly class GoogleController
             'token' => $token,
             'user' => [
               'email' => $ownerDetails->getEmail(),
-              $this->auth->config('roles.key') => json_encode(['administrative']),
+              $this->auth->config('roles.key') => json_encode([Role::ADMINISTRATIVE->name]),
             ],
           ]);
 

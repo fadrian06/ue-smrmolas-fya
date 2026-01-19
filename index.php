@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Role;
 use flight\Container;
 use Leaf\Auth;
 use Symfony\Component\Dotenv\Dotenv;
@@ -67,7 +68,7 @@ $configValue['verify'] = false;
 $configProperty->setValue($httpClient, $configValue);
 
 $auth->createRoles([
-  'administrative' => [
+  Role::ADMINISTRATIVE->name => [
     'create employee',
     'edit employee',
     'destroy employee',

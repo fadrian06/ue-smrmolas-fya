@@ -1,20 +1,24 @@
 <?php
 
+use App\Enums\Role;
 use flight\Container;
 use Leaf\Auth;
 
 $auth = Container::getInstance()->get(Auth::class);
 
 ?>
+
 <form action="./employees" method="post">
-  <select name="<?= $auth->config('roles.key') ?>">
-    <option value="administrative">Administrativo</option>
-    <option value="teacher">Docente</option>
-    <option value="worker">Obrero</option>
-  </select>
   <input type="email" name="email" />
   <input
     type="password"
     name="<?= $auth->config('password.key') ?>" />
+  <select name="<?= $auth->config('roles.key') ?>">
+    <?php foreach (Role::employees() as $role) : ?>
+      <?php if ($role instanceof Role) : ?>
+        <option><?= $role->value ?></option>
+      <?php endif ?>
+    <?php endforeach ?>
+  </select>
   <input type="submit" />
 </form>
