@@ -1,10 +1,17 @@
 {
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^7.1.0",
+    "@types/jquery": "^3.5.33",
+    "animate.css": "^4.1.1",
     "bootstrap": "^5.3.8",
-    "sass": "^1.97.2"
+    "esbuild": "^0.27.2",
+    "jquery": "^4.0.0",
+    "main.css": "^3.0.0",
+    "normalize.css": "^8.0.1",
+    "sass": "^1.97.2",
+    "scrollup": "^1.0.1"
   },
   "scripts": {
-    "build": "sass -q resources/scss:resources/build",
-    "dev": "npm run build -- -w"
+    "build": "sass -q resources/scss:resources/build & esbuild resources/ts/**/*.ts --outdir=resources/build --bundle --sourcemap & esbuild resources/css/**/* --outdir=resources/build --bundle --sourcemap --loader:.woff2=copy --loader:.eot=copy --loader:.svg=copy --loader:.ttf=copy --loader:.woff=copy --loader:.jpg=copy --loader:.gif=copy"
   }
 }
