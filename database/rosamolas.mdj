@@ -37,9 +37,9 @@
 									},
 									"font": "Arial;13;1",
 									"parentStyle": true,
-									"left": 232,
-									"top": 213,
-									"width": 90.68359375,
+									"left": 216,
+									"top": 205,
+									"width": 272.505859375,
 									"height": 13,
 									"text": "users"
 								},
@@ -64,9 +64,9 @@
 											},
 											"font": "Arial;13;0",
 											"parentStyle": true,
-											"left": 237,
-											"top": 236,
-											"width": 80.68359375,
+											"left": 221,
+											"top": 228,
+											"width": 262.505859375,
 											"height": 13
 										},
 										{
@@ -80,9 +80,9 @@
 											},
 											"font": "Arial;13;0",
 											"parentStyle": true,
-											"left": 237,
-											"top": 251,
-											"width": 80.68359375,
+											"left": 221,
+											"top": 243,
+											"width": 262.505859375,
 											"height": 13
 										},
 										{
@@ -96,26 +96,74 @@
 											},
 											"font": "Arial;13;0",
 											"parentStyle": true,
-											"left": 237,
-											"top": 266,
-											"width": 80.68359375,
+											"left": 221,
+											"top": 258,
+											"width": 262.505859375,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAGcDUEiGQAptvw=",
+											"_parent": {
+												"$ref": "AAAAAAGbxdQ/ttuP3u8="
+											},
+											"model": {
+												"$ref": "AAAAAAGcDUEiCwAmCdQ="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 221,
+											"top": 273,
+											"width": 262.505859375,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAGcDUE4kgAwQMc=",
+											"_parent": {
+												"$ref": "AAAAAAGbxdQ/ttuP3u8="
+											},
+											"model": {
+												"$ref": "AAAAAAGcDUE4iwAtLyA="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 221,
+											"top": 288,
+											"width": 262.505859375,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAGcDUFN9gA3Npc=",
+											"_parent": {
+												"$ref": "AAAAAAGbxdQ/ttuP3u8="
+											},
+											"model": {
+												"$ref": "AAAAAAGcDUFN8wA0OD8="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 221,
+											"top": 303,
+											"width": 262.505859375,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"parentStyle": true,
-									"left": 232,
-									"top": 231,
-									"width": 90.68359375,
-									"height": 53
+									"left": 216,
+									"top": 223,
+									"width": 272.505859375,
+									"height": 98
 								}
 							],
 							"font": "Arial;13;0",
 							"parentStyle": false,
-							"left": 232,
-							"top": 208,
-							"width": 90.68359375,
-							"height": 76,
+							"left": 216,
+							"top": 200,
+							"width": 272.505859375,
+							"height": 121,
 							"autoResize": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGbxdQ/ttuOouU="
@@ -141,7 +189,9 @@
 								"$ref": "AAAAAAGbxdQ/tduL5nQ="
 							},
 							"name": "id",
-							"length": 0
+							"type": "INTEGER",
+							"length": 0,
+							"primaryKey": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -150,7 +200,9 @@
 								"$ref": "AAAAAAGbxdQ/tduL5nQ="
 							},
 							"name": "email",
-							"length": 0
+							"type": "VARCHAR",
+							"length": "255",
+							"unique": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -159,7 +211,39 @@
 								"$ref": "AAAAAAGbxdQ/tduL5nQ="
 							},
 							"name": "password",
+							"type": "VARCHAR",
+							"length": "255",
+							"nullable": true
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAGcDUEiCwAmCdQ=",
+							"_parent": {
+								"$ref": "AAAAAAGbxdQ/tduL5nQ="
+							},
+							"name": "created_at",
+							"type": "DATETIME",
 							"length": 0
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAGcDUE4iwAtLyA=",
+							"_parent": {
+								"$ref": "AAAAAAGbxdQ/tduL5nQ="
+							},
+							"name": "updated_at",
+							"type": "DATETIME",
+							"length": 0
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAGcDUFN8wA0OD8=",
+							"_parent": {
+								"$ref": "AAAAAAGbxdQ/tduL5nQ="
+							},
+							"name": "leaf_auth_user_roles",
+							"type": "VARCHAR",
+							"length": "255"
 						}
 					]
 				}
