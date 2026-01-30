@@ -46,19 +46,14 @@ if ($pdo instanceof PDO) {
 
 $auth
   ->db()
-  ->query(<<<sql
-    create table if not exists users (
-      {$auth->config('id.key')} integer primary key autoincrement,
-      email varchar(255) not null unique check (email like '%@%'),
-      {$auth->config('password.key')} varchar(255),
-      created_at datetime default current_timestamp,
-      updated_at datetime default current_timestamp,
-      {$auth->config('roles.key')}
-        varchar(255)
-        not null
-        check ({$auth->config('roles.key')} like '["%"]')
-    );
-  sql)
+  ->createTableIfNotExists((string) $auth->config('db.table'), [
+    $auth->config('id.key') => 'integer primary key autoincrement',
+    'email' => "varchar(255) not null unique check (email like '%@%')",
+    $auth->config('password.key') => 'varchar(255)',
+    'created_at' => 'datetime default current_timestamp',
+    'updated_at' => 'datetime default current_timestamp',
+    $auth->config('roles.key') => "varchar(255) not null check ({$auth->config('roles.key')} like '[\"%\"]')",
+  ])
   ->execute();
 
 $httpClient = (object) $auth->client('google')?->getHttpClient();
