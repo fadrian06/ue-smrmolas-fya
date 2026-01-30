@@ -93,7 +93,7 @@ use Leaf\Auth;
             </li> -->
             <li>
               <a
-                href="<?= Flight::getUrl('oauth2.google.callback') ?>"
+                href=".<?= Flight::getUrl('oauth2.google.callback') ?>"
                 class="bg-gplus">
                 <i class="fab fa-google-plus-g"></i>
               </a>
