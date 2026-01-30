@@ -8,6 +8,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\Authorize;
 use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Middleware\RedirectToAccountSettings;
 
 Flight::route('GET /logout', [LogoutController::class, 'index']);
 
@@ -34,7 +35,7 @@ Flight::group('/', function () {
         Flight::route('GET /edit', [EmployeeController::class, 'edit']);
         Flight::route('POST /', [EmployeeController::class, 'update']);
       }, [new Authorize('edit employee')]);
-    });
+    }, [RedirectToAccountSettings::class]);
 
     Flight::group('/', function (): void {
       Flight::route('GET /create', [EmployeeController::class, 'create']);

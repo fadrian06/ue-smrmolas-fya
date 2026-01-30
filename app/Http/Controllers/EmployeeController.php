@@ -23,7 +23,7 @@ final readonly class EmployeeController
         ->auth
         ->db()
         ->select((string) $this->auth->config('db.table'))
-        ->all()
+        ->all(),
     );
 
     Flight::render('pages/employees/index', compact('employees'), 'page');
@@ -67,12 +67,6 @@ final readonly class EmployeeController
 
   function edit(int $id)
   {
-    if ($id === $this->auth->id()) {
-      Flight::redirect('/account-settings');
-
-      exit;
-    }
-
     $employee = $this->getUserById($id);
 
     Flight::render('pages/employees/edit', compact('employee'), 'page');
