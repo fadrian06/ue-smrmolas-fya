@@ -1,3 +1,8 @@
+<?php Flight::render('components/breadcrumbs', [
+  'breadcrumbs' => ['Docente'],
+  'title' => 'Dashboard Docente',
+]) ?>
+
 <div class="row">
   <!-- Dashboard summery Start Here -->
   <div class="col-12 col-4-xxxl">

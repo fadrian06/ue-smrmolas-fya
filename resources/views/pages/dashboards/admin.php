@@ -1,3 +1,8 @@
+<?php Flight::render('components/breadcrumbs', [
+  'breadcrumbs' => ['Admin'],
+  'title' => 'Dashboard Admin',
+]) ?>
+
 <!-- Dashboard summery Start Here -->
 <div class="row gutters-20">
   <div class="col-xl-3 col-sm-6 col-12">

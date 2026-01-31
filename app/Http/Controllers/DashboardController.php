@@ -15,12 +15,12 @@ final readonly class DashboardController
 
   function index()
   {
-    $dashboard = match (false) {
+    $dashboard = match (true) {
       $this->auth->user()?->is(Role::PRINCIPAL->name) => 'admin',
       $this->auth->user()?->is(Role::TEACHER->name) => 'teacher',
     };
 
     Flight::render("pages/dashboards/$dashboard", key: 'page');
-    Flight::render('layouts/auth');
+    Flight::render('layouts/auth', ['title' => 'Dashboard']);
   }
 }

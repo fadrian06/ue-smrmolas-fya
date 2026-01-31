@@ -42,8 +42,6 @@
       <?php Flight::render('components/sidebar') ?>
 
       <div class="dashboard-content-one">
-        <?php Flight::render('components/breadcrumbs') ?>
-
         <?= $page ?? '' ?>
 
         <?php Flight::render('components/footer') ?>

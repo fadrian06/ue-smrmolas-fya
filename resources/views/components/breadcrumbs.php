@@ -1,11 +1,13 @@
 <!-- Breadcubs Area Start Here -->
 <div class="breadcrumbs-area">
-  <h3>Admin Dashboard</h3>
+  <h3><?= $title ?? '' ?></h3>
   <ul>
     <li>
-      <a href="index.html">Home</a>
+      <a href="./">Inicio</a>
     </li>
-    <li>Teachers</li>
+    <?php foreach ($breadcrumbs ?? [] as $breadcrumb) : ?>
+      <li><?= $breadcrumb ?></li>
+    <?php endforeach ?>
   </ul>
 </div>
 <!-- Breadcubs Area End Here -->
