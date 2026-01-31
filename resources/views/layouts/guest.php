@@ -8,7 +8,7 @@
   <meta name="color-scheme" content="light dark" />
   <base href="<?= str_replace('index.php', '', $_SERVER['SCRIPT_NAME']) ?>" />
   <!-- Favicon -->
-  <link rel="icon" href="./resources/images/MolasRosa.jpg" />
+  <link rel="icon" href="./resources/img/favicon.png" />
   <!-- Normalize CSS -->
   <link rel="stylesheet" href="./resources/build/normalize.css" />
   <!-- Main CSS -->
