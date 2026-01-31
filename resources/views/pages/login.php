@@ -10,7 +10,7 @@ use Leaf\Auth;
 
 <head>
   <meta charset="utf-8" />
-  <title>AKKHOR | Login</title>
+  <title>U.E. SMRMolas FyA | Login</title>
   <meta name="viewport" content="width=device-width" />
   <meta name="color-scheme" content="light dark" />
   <base href="<?= str_replace('index.php', '', $_SERVER['SCRIPT_NAME']) ?>" />
@@ -43,9 +43,9 @@ use Leaf\Auth;
   <div class="login-page-wrap">
     <div class="login-page-content">
       <div class="login-box">
-        <div class="item-logo">
+        <!-- <div class="item-logo">
           <img src="./resources/img/logo2.png" />
-        </div>
+        </div> -->
 
         <form method="post" class="login-form">
           <div class="form-group">
