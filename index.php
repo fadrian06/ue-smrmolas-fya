@@ -56,6 +56,37 @@ $auth
   ])
   ->execute();
 
+$auth
+  ->db()
+  ->createTableIfNotExists('students', [
+    'id' => 'integer primary key autoincrement',
+    'first_name' => 'varchar(255) not null',
+    'second_name' => 'varchar(255)',
+    'first_last_name' => 'varchar(255) not null',
+    'second_last_name' => 'varchar(255)',
+    'nationality' => 'varchar(1) not null check (nationality in ("v", "e"))',
+    'id_card' => 'integer unique',
+    'birth_type' => 'integer not null check (birth_type in (1, 2, 3))',
+    'birth_date' => 'datetime not null, unique (first_name, second_name, first_last_name, second_last_name)',
+  ])
+  ->execute();
+
+$auth
+  ->db()
+  ->createTableIfNotExists('representatives', [
+    'id_card' => 'integer primary key autoincrement',
+    'nationality' => 'varchar(1) not null check (nationality in ("v", "e"))',
+  ])
+  ->execute();
+
+$auth
+  ->db()
+  ->createTableIfNotExists('representative_student', [
+    'representative_id_card' => 'integer not null',
+    'student_id' => 'integer not null, foreign key (representative_id_card) references representatives(id_card), foreign key (student_id) references students(id)',
+  ])
+  ->execute();
+
 $httpClient = (object) $auth->client('google')?->getHttpClient();
 $configProperty = new ReflectionProperty($httpClient, 'config');
 $configValue = $configProperty->getValue($httpClient);
@@ -63,7 +94,7 @@ $configValue['verify'] = false;
 $configProperty->setValue($httpClient, $configValue);
 
 $auth->createRoles([
-  Role::ADMINISTRATIVE->name => [
+  Role::PRINCIPAL->name => [
     'create employee',
     'edit employee',
     'destroy employee',

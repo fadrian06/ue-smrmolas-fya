@@ -59,7 +59,7 @@ final readonly class GoogleController
             'token' => $token,
             'user' => [
               'email' => $ownerDetails->getEmail(),
-              $this->auth->config('roles.key') => json_encode([Role::ADMINISTRATIVE->name]),
+              $this->auth->config('roles.key') => json_encode([Role::PRINCIPAL->name]),
             ],
           ]);
 
