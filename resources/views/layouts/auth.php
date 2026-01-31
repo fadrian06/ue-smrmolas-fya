@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="./resources/build/fullcalendar.css">
   <!-- Animate CSS -->
   <link rel="stylesheet" href="./resources/build/animate.css" />
+  <!-- Data Table CSS -->
+  <link rel="stylesheet" href="./resources/build/dataTables.dataTables.css" />
   <!-- Custom CSS -->
   <link rel="stylesheet" href="./resources/build/style.css" />
   <!-- Modernize js -->

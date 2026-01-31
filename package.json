@@ -6,6 +6,7 @@
     "animate.css": "3.5.1",
     "bootstrap": "4.1.3",
     "chart.js": "2.7.3",
+    "datatables.net-dt": "^2.3.7",
     "esbuild": "^0.27.2",
     "fullcalendar": "3.10.0",
     "html5-boilerplate": "6.1.0",
@@ -17,6 +18,6 @@
     "waypoints": "4.0.1"
   },
   "scripts": {
-    "build": "sass -q resources/scss:resources/build & esbuild resources/ts/**/*.ts --outdir=resources/build --bundle --sourcemap & esbuild resources/css/**/* --outdir=resources/build --bundle --sourcemap --loader:.woff2=copy --loader:.eot=copy --loader:.svg=copy --loader:.ttf=copy --loader:.woff=copy --loader:.jpg=copy --loader:.gif=copy"
+    "build": "sass -q resources/scss:resources/build & esbuild resources/ts/**/*.ts --outdir=resources/build --bundle --sourcemap & esbuild resources/css/**/* --outdir=resources/build --bundle --sourcemap --loader:.woff2=copy --loader:.eot=copy --loader:.svg=copy --loader:.ttf=copy --loader:.woff=copy --loader:.jpg=copy --loader:.gif=copy --loader:.png=copy"
   }
 }

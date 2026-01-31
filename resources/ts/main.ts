@@ -1,9 +1,10 @@
+import DataTable from 'datatables.net-dt';
 import Chart from "./chart";
 import jQuery from "./jquery";
 import "bootstrap/dist/js/bootstrap.bundle";
+import "fullcalendar";
 import "jquery.scrollup/dist/jquery.scrollUp";
 import "./jquery.counterup";
-import "fullcalendar";
 
 (function ($) {
   "use strict";
@@ -83,8 +84,8 @@ import "fullcalendar";
     /*-------------------------------------
           Data Table init
       -------------------------------------*/
-    if ($.fn.DataTable !== undefined) {
-      $('.data-table').DataTable({
+    for (const element of document.getElementsByClassName('data-table')) {
+      new DataTable(element, {
         paging: true,
         searching: false,
         info: false,
