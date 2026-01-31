@@ -38,8 +38,6 @@
 
   <!-- Plugins js -->
   <script src="./resources/build/plugins.js"></script>
-  <!-- Bootstrap js -->
-  <script src="./resources/build/bootstrap.bundle.js"></script>
   <!-- Custom Js -->
   <script src="./resources/build/main.js"></script>
 
