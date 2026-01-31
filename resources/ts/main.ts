@@ -1,5 +1,7 @@
+import Chart from "./chart";
 import jQuery from "./jquery";
 import "./jquery.scrollUp";
+import "./jquery.counterup";
 
 (function ($) {
   "use strict";
@@ -311,7 +313,8 @@ import "./jquery.scrollUp";
         datasets: [{
           backgroundColor: ["#40dfcd", "#417dfc", "#ffaa01"],
           data: [125000, 100000, 75000, 50000, 150000],
-          label: "Expenses (millions)"
+          label: "Expenses (millions)",
+          maxBarThickness: 100,
         },]
       };
       var barChartOptions = {
@@ -324,7 +327,7 @@ import "./jquery.scrollUp";
 
           xAxes: [{
             display: false,
-            maxBarThickness: 100,
+            // maxBarThickness: 100,
             ticks: {
               display: false,
               padding: 0,
