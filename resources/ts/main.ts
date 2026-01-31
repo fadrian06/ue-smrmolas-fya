@@ -1,7 +1,7 @@
 import Chart from "./chart";
 import jQuery from "./jquery";
 import "bootstrap/dist/js/bootstrap.bundle";
-import "./jquery.scrollUp";
+import "jquery.scrollup/dist/jquery.scrollUp";
 import "./jquery.counterup";
 import "fullcalendar";
 
