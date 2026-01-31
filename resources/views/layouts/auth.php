@@ -8,7 +8,7 @@
   <meta name="color-scheme" content="light dark" />
   <base href="<?= str_replace('index.php', '', $_SERVER['SCRIPT_NAME']) ?>" />
   <!-- Favicon -->
-  <link rel="icon" href="./resources/images/MolasRosa.jpg" />
+  <link rel="icon" href="./resources/img/favicon.png" />
   <!-- Normalize CSS -->
   <link rel="stylesheet" href="./resources/build/normalize.css" />
   <!-- Main CSS -->
@@ -40,12 +40,8 @@
 
   <!-- Plugins js -->
   <script src="./resources/build/plugins.js"></script>
-  <!-- Bootstrap js -->
-  <script src="./resources/build/bootstrap.bundle.js"></script>
   <!-- Moment Js -->
   <script src="./resources/build/moment.js"></script>
-  <!-- Full Calender Js -->
-  <script src="./resources/build/fullcalendar.js"></script>
   <!-- Custom Js -->
   <script src="./resources/build/main.js"></script>
 

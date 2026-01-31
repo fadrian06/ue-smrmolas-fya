@@ -3,6 +3,7 @@ import jQuery from "./jquery";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "./jquery.scrollUp";
 import "./jquery.counterup";
+import "./fullcalendar";
 
 (function ($) {
   "use strict";
