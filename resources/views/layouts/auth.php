@@ -35,8 +35,20 @@
   <!-- Preloader Start Here -->
   <div id="preloader"></div>
   <!-- Preloader End Here -->
+  <div id="wrapper" class="wrapper bg-ash">
+    <?php Flight::render('components/navbar-menu') ?>
+    <!-- Page Area Start Here -->
+    <div class="dashboard-page-one">
+      <?php Flight::render('components/sidebar') ?>
 
-  <?= $page ?? '' ?>
+      <div class="dashboard-content-one">
+        <?= $page ?? '' ?>
+
+        <?php Flight::render('components/footer') ?>
+      </div>
+    </div>
+    <!-- Page Area End Here -->
+  </div>
 
   <?php Flight::render('components/toasts') ?>
 
