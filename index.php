@@ -105,6 +105,7 @@ Flight::registerContainerHandler(Container::getInstance());
 
 Flight::set('flight.views.path', 'resources/views');
 Flight::view()->preserveVars = false;
+Flight::view()->set('title', '');
 
 foreach (glob('routes/*.php') ?: [] as $routes) {
   require $routes;

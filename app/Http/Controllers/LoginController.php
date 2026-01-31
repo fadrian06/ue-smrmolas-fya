@@ -15,8 +15,8 @@ final readonly class LoginController
 
   function index()
   {
-    Flight::render('pages/login', /*key: 'page'*/);
-    // Flight::render('layouts/guest');
+    Flight::render('pages/login', key: 'page');
+    Flight::render('layouts/guest', ['title' => 'Login']);
   }
 
   function authenticate()
