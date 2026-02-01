@@ -1,9 +1,19 @@
+<?php
+
+use App\Enums\Role;
+use flight\Container;
+use Leaf\Auth;
+
+$user = Container::getInstance()->get(Auth::class)->user();
+
+?>
+
 <!-- Header Menu Area Start Here -->
 <div class="navbar navbar-expand-md header-menu-one bg-light">
   <div class="nav-bar-header-one">
     <div class="header-logo">
-      <a href="index.html">
-        <img src="./resources/img/logo.png" alt="logo">
+      <a href="./">
+        <img src="./resources/img/logo.png" />
       </a>
     </div>
     <div class="toggle-button sidebar-toggle">
@@ -17,7 +27,11 @@
     </div>
   </div>
   <div class="d-md-none mobile-nav-bar">
-    <button class="navbar-toggler pulse-animation" type="button" data-toggle="collapse" data-target="#mobile-navbar" aria-expanded="false">
+    <button
+      class="navbar-toggler pulse-animation"
+      type="button"
+      data-toggle="collapse"
+      data-target="#mobile-navbar">
       <i class="far fa-arrow-alt-circle-down"></i>
     </button>
     <button type="button" class="navbar-toggler sidebar-toggle-mobile">
@@ -26,50 +40,78 @@
   </div>
   <div class="header-main-menu collapse navbar-collapse" id="mobile-navbar">
     <ul class="navbar-nav">
-      <li class="navbar-item header-search-bar">
+      <!-- <li class="navbar-item header-search-bar">
         <div class="input-group stylish-input-group">
           <span class="input-group-addon">
             <button type="submit">
-              <span class="flaticon-search" aria-hidden="true"></span>
+              <span class="flaticon-search"></span>
             </button>
           </span>
-          <input type="text" class="form-control" placeholder="Find Something . . .">
+          <input type="search" class="form-control" placeholder="Busca Algo . . .">
         </div>
-      </li>
+      </li> -->
     </ul>
     <ul class="navbar-nav">
       <li class="navbar-item dropdown header-admin">
-        <a class="navbar-nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-          aria-expanded="false">
+        <a
+          class="navbar-nav-link dropdown-toggle"
+          href="#"
+          data-toggle="dropdown">
           <div class="admin-title">
-            <h5 class="item-title">Stevne Zone</h5>
-            <span>Admin</span>
+            <h5 class="item-title">
+              <?= "$user?->first_name $user?->first_last_name" ?>
+            </h5>
+            <span>
+              <?= Role::tryFromName((string) $user?->roles()[0])?->value ?>
+            </span>
           </div>
           <div class="admin-img">
-            <img src="./resources/img/figure/admin.jpg" alt="Admin">
+            <img src="<?= $user?->avatar_url ?>" width="40" height="40" />
           </div>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
           <div class="item-header">
-            <h6 class="item-title">Steven Zone</h6>
+            <h6 class="item-title">
+              <?= "$user?->first_name $user?->first_last_name" ?>
+            </h6>
           </div>
           <div class="item-content">
             <ul class="settings-list">
-              <li><a href="#"><i class="flaticon-user"></i>My Profile</a></li>
-              <li><a href="#"><i class="flaticon-list"></i>Task</a></li>
-              <li><a href="#"><i class="flaticon-chat-comment-oval-speech-bubble-with-text-lines"></i>Message</a></li>
-              <li><a href="#"><i class="flaticon-gear-loading"></i>Account Settings</a></li>
+              <!-- <li>
+                <a href="#">
+                  <i class="flaticon-user"></i>
+                  My Profile
+                </a>
+              </li> -->
+              <!-- <li>
+                <a href="#">
+                  <i class="flaticon-list"></i>
+                  Task
+                </a>
+              </li> -->
+              <!-- <li>
+                <a href="#">
+                  <i class="flaticon-chat-comment-oval-speech-bubble-with-text-lines"></i>
+                  Message
+                </a>
+              </li> -->
+              <li>
+                <a href="./account-settings">
+                  <i class="flaticon-gear-loading"></i>
+                  Ajustes de Cuenta
+                </a>
+              </li>
               <li>
                 <a href="./logout">
                   <i class="flaticon-turn-off"></i>
-                  Log Out
+                  Cerrar Sesión
                 </a>
               </li>
             </ul>
           </div>
         </div>
       </li>
-      <li class="navbar-item dropdown header-message">
+      <li class="navbar-item dropdown header-message"><!--
         <a class="navbar-nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
           aria-expanded="false">
           <i class="far fa-envelope"></i>
@@ -144,8 +186,8 @@
             </div>
           </div>
         </div>
-      </li>
-      <li class="navbar-item dropdown header-notification">
+      </li> -->
+      <!-- <li class="navbar-item dropdown header-notification">
         <a class="navbar-nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
           aria-expanded="false">
           <i class="far fa-bell"></i>
@@ -187,8 +229,8 @@
             </div>
           </div>
         </div>
-      </li>
-      <li class="navbar-item dropdown header-language">
+      </li> -->
+      <!-- <li class="navbar-item dropdown header-language">
         <a class="navbar-nav-link dropdown-toggle" href="#" role="button"
           data-toggle="dropdown" aria-expanded="false"><i class="fas fa-globe-americas"></i>EN</a>
         <div class="dropdown-menu dropdown-menu-right">
@@ -197,7 +239,7 @@
           <a class="dropdown-item" href="#">Franchis</a>
           <a class="dropdown-item" href="#">Chiness</a>
         </div>
-      </li>
+      </li> -->
     </ul>
   </div>
 </div>

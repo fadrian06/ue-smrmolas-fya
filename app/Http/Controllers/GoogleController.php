@@ -60,6 +60,9 @@ final readonly class GoogleController
             'user' => [
               'email' => $ownerDetails->getEmail(),
               $this->auth->config('roles.key') => json_encode([Role::PRINCIPAL->name]),
+              'first_name' => $ownerDetails->getFirstName(),
+              'first_last_name' => $ownerDetails->getLastName(),
+              'avatar_url' => $ownerDetails->getAvatar(),
             ],
           ]);
 

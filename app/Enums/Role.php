@@ -11,4 +11,13 @@ enum Role: string
   {
     return [self::TEACHER];
   }
+
+  static function tryFromName(string $name): ?self
+  {
+    return match ($name) {
+      self::PRINCIPAL->name => self::PRINCIPAL,
+      self::TEACHER->name => self::TEACHER,
+      default => null,
+    };
+  }
 }

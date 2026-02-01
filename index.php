@@ -53,6 +53,11 @@ $auth
     'created_at' => 'datetime default current_timestamp',
     'updated_at' => 'datetime default current_timestamp',
     $auth->config('roles.key') => "varchar(255) not null check ({$auth->config('roles.key')} like '[\"%\"]')",
+    'first_name' => 'varchar(255) not null',
+    'second_name' => 'varchar(255)',
+    'first_last_name' => 'varchar(255) not null',
+    'second_last_name' => 'varchar(255)',
+    'avatar_url' => 'varchar(255) not null, unique (first_name, second_name, first_last_name, second_last_name)',
   ])
   ->execute();
 
