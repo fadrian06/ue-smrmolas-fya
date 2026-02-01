@@ -1,3 +1,61 @@
+<?php
+
+use App\Enums\Role;
+use flight\Container;
+use Leaf\Auth;
+
+$auth = Container::getInstance()->get(Auth::class);
+
+$summeries = [
+  [
+    'backgroundColor' => 'light-green',
+    'flaticonIcon' => 'classmates',
+    'textColor' => 'green',
+    'title' => 'Estudiantes',
+    'dataNum' => $auth
+      ->db()
+      ->query('SELECT COUNT(id) numberOfStudents FROM students')
+      ->obj()
+      ->numberOfStudents,
+  ],
+  [
+    'backgroundColor' => 'light-blue',
+    'flaticonIcon' => 'multiple-users-silhouette',
+    'textColor' => 'blue',
+    'title' => 'Docentes',
+    'dataNum' => $auth
+      ->db()
+      ->query("
+        SELECT COUNT({$auth->config('id.key')}) numberOfTeachers
+        FROM {$auth->config('db.table')}
+        WHERE {$auth->config('roles.key')} LIKE '%" . Role::TEACHER->name . "%'
+      ")
+      ->obj()
+      ->numberOfTeachers,
+  ],
+  [
+    'backgroundColor' => 'light-yellow',
+    'flaticonIcon' => 'couple',
+    'textColor' => 'orange',
+    'title' => 'Representantes',
+    'dataNum' => $auth
+      ->db()
+      ->query('SELECT COUNT(id_card) numberOfRepresentatives FROM representatives')
+      ->obj()
+      ->numberOfRepresentatives,
+  ],
+  // [
+  //   'backgroundColor' => 'light-red',
+  //   'flaticonIcon' => 'money',
+  //   'textColor' => 'red',
+  //   'title' => 'Earnings',
+  //   'dataNum' => 193000,
+  //   'preCounter' => '$',
+  // ],
+];
+
+?>
+
 <?php Flight::render('components/breadcrumbs', [
   'breadcrumbs' => ['Admin'],
   'title' => 'Dashboard Admin',
@@ -5,76 +63,33 @@
 
 <!-- Dashboard summery Start Here -->
 <div class="row gutters-20">
-  <div class="col-xl-3 col-sm-6 col-12">
-    <div class="dashboard-summery-one mg-b-20">
-      <div class="row align-items-center">
-        <div class="col-6">
-          <div class="item-icon bg-light-green ">
-            <i class="flaticon-classmates text-green"></i>
+  <?php foreach ($summeries as $summery) : ?>
+    <div class="col-xl-4 col-sm-6 col-12">
+      <div class="dashboard-summery-one mg-b-20">
+        <div class="row align-items-center">
+          <div class="col-6">
+            <div class="item-icon bg-<?= $summery['backgroundColor'] ?? '' ?>">
+              <i class="flaticon-<?= $summery['flaticonIcon'] ?? '' ?> text-<?= $summery['textColor'] ?? '' ?>"></i>
+            </div>
           </div>
-        </div>
-        <div class="col-6">
-          <div class="item-content">
-            <div class="item-title">Students</div>
-            <div class="item-number"><span class="counter" data-num="150000">1,50,000</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-3 col-sm-6 col-12">
-    <div class="dashboard-summery-one mg-b-20">
-      <div class="row align-items-center">
-        <div class="col-6">
-          <div class="item-icon bg-light-blue">
-            <i class="flaticon-multiple-users-silhouette text-blue"></i>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="item-content">
-            <div class="item-title">Teachers</div>
-            <div class="item-number"><span class="counter" data-num="2250">2,250</span></div>
+          <div class="col-6">
+            <div class="item-content">
+              <div class="item-title"><?= $summery['title'] ?? '' ?></div>
+              <div class="item-number d-flex justify-content-end">
+                <span><?= $summery['preCounter'] ?? '' ?></span>
+                <span class="counter" data-num="<?= $summery['dataNum'] ?? '' ?>">
+                  <?= $summery['dataNum'] ?? '' ?>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-xl-3 col-sm-6 col-12">
-    <div class="dashboard-summery-one mg-b-20">
-      <div class="row align-items-center">
-        <div class="col-6">
-          <div class="item-icon bg-light-yellow">
-            <i class="flaticon-couple text-orange"></i>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="item-content">
-            <div class="item-title">Parents</div>
-            <div class="item-number"><span class="counter" data-num="5690">5,690</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-3 col-sm-6 col-12">
-    <div class="dashboard-summery-one mg-b-20">
-      <div class="row align-items-center">
-        <div class="col-6">
-          <div class="item-icon bg-light-red">
-            <i class="flaticon-money text-red"></i>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="item-content">
-            <div class="item-title">Earnings</div>
-            <div class="item-number"><span>$</span><span class="counter" data-num="193000">1,93,000</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <?php endforeach ?>
 </div>
 <!-- Dashboard summery End Here -->
+
 <!-- Dashboard Content Start Here -->
 <div class="row gutters-20">
   <div class="col-12 col-xl-8 col-6-xxxl">
