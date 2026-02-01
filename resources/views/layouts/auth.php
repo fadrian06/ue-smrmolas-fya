@@ -44,7 +44,7 @@
       <div class="dashboard-content-one">
         <?= $page ?? '' ?>
 
-        <?php Flight::render('components/footer') ?>
+        <?php # Flight::render('components/footer') ?>
       </div>
     </div>
     <!-- Page Area End Here -->
