@@ -28,28 +28,28 @@ $sidebarNavItems = [
   //     ],
   //   ],
   // ],
-  // [
-  //   'title' => 'Teachers',
-  //   'flaticonIcon' => 'multiple-users-silhouette',
-  //   'subGroupMenuItems' => [
-  //     [
-  //       'href' => './all-teacher',
-  //       'title' => 'All Teachers',
-  //     ],
-  //     [
-  //       'href' => './teacher-details',
-  //       'title' => 'Teacher Details',
-  //     ],
-  //     [
-  //       'href' => './add-teacher',
-  //       'title' => 'Add Teacher',
-  //     ],
-  //     [
-  //       'href' => './teacher-payment',
-  //       'title' => 'Payment',
-  //     ],
-  //   ],
-  // ],
+  [
+    'title' => 'Docentes',
+    'flaticonIcon' => 'multiple-users-silhouette',
+    'subGroupMenuItems' => [
+      [
+        'href' => './teachers',
+        'title' => 'Todos los docentes',
+      ],
+      // [
+      //   'href' => './teacher-details',
+      //   'title' => 'Teacher Details',
+      // ],
+      [
+        'href' => './teachers/create',
+        'title' => 'Añadir docente',
+      ],
+      // [
+      //   'href' => './teacher-payment',
+      //   'title' => 'Payment',
+      // ],
+    ],
+  ],
   // [
   //   'title' => 'Parents',
   //   'flaticonIcon' => 'couple',

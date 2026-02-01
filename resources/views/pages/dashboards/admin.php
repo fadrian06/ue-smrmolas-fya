@@ -204,7 +204,7 @@ $summeries = [
           <div class="item-title">
             <h3>Estudiantes</h3>
           </div>
-          <div class="dropdown">
+          <!-- <div class="dropdown">
             <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">...</a>
             <div class="dropdown-menu dropdown-menu-right">
               <button
@@ -214,14 +214,14 @@ $summeries = [
                 <i class="fas fa-times text-orange-red"></i>
                 Cerrar
               </button>
-              <!-- <a class="dropdown-item" href="#"><i
-                  class="fas fa-cogs text-dark-pastel-green"></i>Edit</a> -->
+              <a class="dropdown-item" href="#"><i
+                  class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
               <button type="button" class="dropdown-item" @click="updateNumberOfStudents()">
                 <i class="fas fa-redo-alt text-orange-peel"></i>
                 Refrescar
               </button>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="doughnut-chart-wrap">
           <canvas

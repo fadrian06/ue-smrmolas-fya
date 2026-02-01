@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\Authorize;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -46,5 +47,10 @@ Flight::group('/', function () {
   Flight::group('/account-settings', function () {
     Flight::route('GET /', [AccountSettingsController::class, 'index']);
     Flight::route('POST /', [AccountSettingsController::class, 'update']);
+  });
+
+  Flight::group('/teachers', function () {
+    Flight::route('GET /', [TeacherController::class, 'index']);
+    Flight::route('GET /create', [TeacherController::class, 'create']);
   });
 }, [Authenticate::class]);

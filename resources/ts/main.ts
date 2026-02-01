@@ -95,6 +95,9 @@ import "./jquery.counterup";
           targets: [0, -1], // column or columns numbers
           orderable: false // set orderable for selected columns
         }],
+        language: {
+          emptyTable: 'No hay datos disponibles en la tabla',
+        }
       });
     }
 
