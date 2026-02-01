@@ -72,7 +72,8 @@ $auth
     'nationality' => 'varchar(1) not null check (nationality in ("v", "e"))',
     'id_card' => 'integer unique',
     'birth_type' => 'integer not null check (birth_type in (1, 2, 3))',
-    'birth_date' => 'datetime not null, unique (first_name, second_name, first_last_name, second_last_name)',
+    'birth_date' => 'datetime not null',
+    'gender' => 'varchar(1) not null check (gender in ("m", "f")), unique (first_name, second_name, first_last_name, second_last_name)',
   ])
   ->execute();
 
