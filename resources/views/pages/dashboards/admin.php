@@ -279,7 +279,7 @@ $summeries = [
       </div>
     </div>
   </div>
-  <div class="col-12 col-xl-6 col-4-xxxl">
+  <!-- <div class="col-12 col-xl-6 col-4-xxxl">
     <div class="card dashboard-card-four pd-b-20">
       <div class="card-body">
         <div class="heading-layout1">
@@ -305,8 +305,8 @@ $summeries = [
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-6 col-xl-6 col-4-xxxl">
+  </div> -->
+  <!-- <div class="col-lg-6 col-xl-6 col-4-xxxl">
     <div class="card dashboard-card-five pd-b-20">
       <div class="card-body pd-b-14">
         <div class="heading-layout1">
@@ -367,8 +367,8 @@ $summeries = [
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-6 col-xl-6 col-4-xxxl">
+  </div> -->
+  <!-- <div class="col-lg-6 col-xl-6 col-4-xxxl">
     <div class="card dashboard-card-six pd-b-20">
       <div class="card-body">
         <div class="heading-layout1 mg-b-17">
@@ -425,11 +425,11 @@ $summeries = [
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
 <!-- Dashboard Content End Here -->
 <!-- Social Media Start Here -->
-<div class="row gutters-20">
+<!-- <div class="row gutters-20">
   <div class="col-lg-3 col-sm-6 col-12">
     <div class="card dashboard-card-seven">
       <div class="social-media bg-fb hover-fb">
@@ -490,5 +490,5 @@ $summeries = [
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- Social Media End Here -->
