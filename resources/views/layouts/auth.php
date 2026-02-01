@@ -58,7 +58,8 @@
   <script src="./resources/build/moment.js"></script>
   <!-- Custom Js -->
   <script src="./resources/build/main.js"></script>
-
+  <script src="./resources/build/alpinejs.js"></script>
+  <script src="./resources/build/chart.js"></script>
 </body>
 
 </html>

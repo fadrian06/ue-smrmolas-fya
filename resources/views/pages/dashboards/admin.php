@@ -92,7 +92,7 @@ $summeries = [
 
 <!-- Dashboard Content Start Here -->
 <div class="row gutters-20">
-  <div class="col-12 col-xl-8 col-6-xxxl">
+  <!-- <div class="col-12 col-xl-8 col-6-xxxl">
     <div class="card dashboard-card-one pd-b-20">
       <div class="card-body">
         <div class="heading-layout1">
@@ -139,8 +139,8 @@ $summeries = [
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-12 col-xl-4 col-3-xxxl">
+  </div> -->
+  <!-- <div class="col-12 col-xl-4 col-3-xxxl">
     <div class="card dashboard-card-two pd-b-20">
       <div class="card-body">
         <div class="heading-layout1">
@@ -180,39 +180,100 @@ $summeries = [
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-12 col-xl-6 col-3-xxxl">
-    <div class="card dashboard-card-three pd-b-20">
+  </div> -->
+  <div class="col-12 col-xl-6 col-3-xxxl" id="student-doughnut-chart-col">
+    <div
+      class="card dashboard-card-three pd-b-20"
+      x-data="{
+        numberOfFemaleStudents: 45000,
+        numberOfMaleStudents: 103000,
+        studentsChart: undefined,
+
+        updateNumberOfStudents() {
+          fetch('./api/students-by-gender')
+            .then(response => response.json())
+            .then(body => {
+              this.numberOfMaleStudents = body.numberOfMaleStudents;
+              this.numberOfFemaleStudents = body.numberOfFemaleStudents;
+            })
+        },
+      }"
+      x-init="updateNumberOfStudents()">
       <div class="card-body">
         <div class="heading-layout1">
           <div class="item-title">
-            <h3>Students</h3>
+            <h3>Estudiantes</h3>
           </div>
           <div class="dropdown">
-            <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-              aria-expanded="false">...</a>
-
+            <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">...</a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="#"><i
-                  class="fas fa-times text-orange-red"></i>Close</a>
-              <a class="dropdown-item" href="#"><i
-                  class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
-              <a class="dropdown-item" href="#"><i
-                  class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+              <button
+                class="dropdown-item"
+                type="button"
+                @click="document.getElementById('student-doughnut-chart-col').remove()">
+                <i class="fas fa-times text-orange-red"></i>
+                Cerrar
+              </button>
+              <!-- <a class="dropdown-item" href="#"><i
+                  class="fas fa-cogs text-dark-pastel-green"></i>Edit</a> -->
+              <button type="button" class="dropdown-item" @click="updateNumberOfStudents()">
+                <i class="fas fa-redo-alt text-orange-peel"></i>
+                Refrescar
+              </button>
             </div>
           </div>
         </div>
         <div class="doughnut-chart-wrap">
-          <canvas id="student-doughnut-chart" width="100" height="300"></canvas>
+          <canvas
+            id="student-doughnut-chart"
+            width="100"
+            height="300"
+            x-init="studentsChart = new Chart($el.getContext('2d'), {
+              type: 'doughnut',
+              data: {
+                labels: ['Niñas', 'Niños'],
+                datasets: [{
+                  backgroundColor: ['#304ffe', '#ffa601'],
+                  data: [numberOfFemaleStudents, numberOfMaleStudents],
+                  label: 'Estudiantes Totales'
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutoutPercentage: 65,
+                rotation: -9.4,
+                animation: {
+                  duration: 2000
+                },
+                legend: {
+                  display: false
+                },
+                tooltips: {
+                  enabled: true
+                },
+              },
+            })"
+            x-effect="
+              studentsChart.data.datasets[0].data = [numberOfFemaleStudents, numberOfMaleStudents];
+              studentsChart.update();
+            ">
+          </canvas>
         </div>
         <div class="student-report">
           <div class="student-count pseudo-bg-blue">
-            <h4 class="item-title">Female Students</h4>
-            <div class="item-number">45,000</div>
+            <h4 class="item-title">Niñas</h4>
+            <div
+              class="item-number"
+              x-text="numberOfFemaleStudents.toLocaleString()">
+            </div>
           </div>
           <div class="student-count pseudo-bg-yellow">
-            <h4 class="item-title">Male Students</h4>
-            <div class="item-number">1,05,000</div>
+            <h4 class="item-title">Niños</h4>
+            <div
+              class="item-number"
+              x-text="numberOfMaleStudents.toLocaleString()">
+            </div>
           </div>
         </div>
       </div>

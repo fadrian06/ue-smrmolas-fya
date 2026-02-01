@@ -400,42 +400,6 @@ import "./jquery.counterup";
     }
 
     /*-------------------------------------
-          Doughnut Chart
-      -------------------------------------*/
-    if ($("#student-doughnut-chart").length) {
-
-      var doughnutChartData = {
-        labels: ["Female Students", "Male Students"],
-        datasets: [{
-          backgroundColor: ["#304ffe", "#ffa601"],
-          data: [45000, 105000],
-          label: "Total Students"
-        },]
-      };
-      var doughnutChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        cutoutPercentage: 65,
-        rotation: -9.4,
-        animation: {
-          duration: 2000
-        },
-        legend: {
-          display: false
-        },
-        tooltips: {
-          enabled: true
-        },
-      };
-      var studentCanvas = $("#student-doughnut-chart").get(0).getContext("2d");
-      var studentChart = new Chart(studentCanvas, {
-        type: 'doughnut',
-        data: doughnutChartData,
-        options: doughnutChartOptions
-      });
-    }
-
-    /*-------------------------------------
           Calender initiate
       -------------------------------------*/
     if ($.fn.fullCalendar !== undefined) {
