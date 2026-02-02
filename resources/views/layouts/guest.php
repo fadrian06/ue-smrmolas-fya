@@ -8,23 +8,23 @@
   <meta name="color-scheme" content="light dark" />
   <base href="<?= str_replace('index.php', '', $_SERVER['SCRIPT_NAME']) ?>" />
   <!-- Favicon -->
-  <link rel="icon" href="./resources/img/favicon.png" />
+  <link rel="icon" href="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/favicon.png" />
   <!-- Normalize CSS -->
-  <link rel="stylesheet" href="./resources/build/normalize.css" />
+  <link rel="stylesheet" href="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/css/normalize.css" />
   <!-- Main CSS -->
-  <link rel="stylesheet" href="./resources/build/main.css" />
+  <link rel="stylesheet" href="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/css/main.css" />
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="./resources/build/bootstrap.css" />
+  <link rel="stylesheet" href="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/css/bootstrap.min.css" />
   <!-- Fontawesome CSS -->
-  <link rel="stylesheet" href="./resources/build/all.css" />
+  <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
   <!-- Flaticon CSS -->
-  <link rel="stylesheet" href="./resources/build/flaticon.css">
+  <link rel="stylesheet" href="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/fonts/flaticon.css" />
   <!-- Animate CSS -->
-  <link rel="stylesheet" href="./resources/build/animate.css" />
+  <link rel="stylesheet" href="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/css/animate.min.css" />
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="./resources/build/style.css" />
+  <link rel="stylesheet" href="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/style.css" />
   <!-- Modernize js -->
-  <script src="./resources/build/modernizr.js"></script>
+  <script src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/js/modernizr-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -36,10 +36,18 @@
 
   <?php Flight::render('components/toasts') ?>
 
+  <!-- jquery-->
+  <script src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/js/jquery-3.3.1.min.js"></script>
   <!-- Plugins js -->
-  <script src="./resources/build/plugins.js"></script>
+  <script src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/js/plugins.js"></script>
+  <!-- Popper js -->
+  <script src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/js/popper.min.js"></script>
+  <!-- Bootstrap js -->
+  <script src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/js/bootstrap.min.js"></script>
+  <!-- Scroll Up Js -->
+  <script src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/js/jquery.scrollUp.min.js"></script>
   <!-- Custom Js -->
-  <script src="./resources/build/main.js"></script>
+  <script src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/js/main.js"></script>
 
 </body>
 
