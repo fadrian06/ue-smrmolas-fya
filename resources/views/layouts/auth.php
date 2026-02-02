@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/style.css" />
   <!-- Modernize js -->
   <script src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/js/modernizr-3.6.0.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body>

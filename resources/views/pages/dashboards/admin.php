@@ -225,7 +225,6 @@ $summeries = [
         </div>
         <div class="doughnut-chart-wrap">
           <canvas
-            id="student-doughnut-chart"
             width="100"
             height="300"
             x-init="studentsChart = new Chart($el.getContext('2d'), {
